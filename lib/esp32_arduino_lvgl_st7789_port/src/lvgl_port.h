@@ -6,6 +6,7 @@
 
 namespace lvgl {
     void port_setup();
+    void vLVGLTimerHandlerTask(void *pvParameters);
 }
 
 
