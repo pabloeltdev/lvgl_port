@@ -4,6 +4,13 @@
 #include "lvgl_port.hpp"
 #include "assets/splash.h"
 #include "ui/ui.h"
+#include "ui/actions.h"
+
+bool loaded = false;
+
+void action_next(lv_event_t * e) {
+
+}
 
 static lv_obj_t * slider_label;
 // LV_FONT_DECLARE(&roboto_32);
@@ -19,8 +26,8 @@ static void slider_event_cb(lv_event_t * e)
 
 void setup() {
     lvgl::port_setup();
-    // ui_init();
-    ///* //    ---> Splash Screen
+    ui_init();
+    /* //    ---> Splash Screen
     lv_obj_t * img1 = lv_image_create(lv_screen_active());
     lv_image_set_src(img1, &img_splash_screen);
     lv_obj_t * spinner = lv_spinner_create(lv_screen_active());
@@ -45,6 +52,10 @@ void setup() {
 
 void loop() {
   lv_task_handler();
-  // ui_tick();
-  delay(3);
+  if (!loaded && millis() > 4000) {
+    loaded = true;
+    loadScreen(SCREEN_ID_FIRST);
+  }
+  ui_tick();
+  delay(5);
 }

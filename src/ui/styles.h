@@ -7,6 +7,11 @@
 extern "C" {
 #endif
 
+// Style: default_label
+lv_style_t *get_style_default_label_MAIN_DEFAULT();
+void add_style_default_label(lv_obj_t *obj);
+void remove_style_default_label(lv_obj_t *obj);
+
 
 
 #ifdef __cplusplus
